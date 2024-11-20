@@ -4,12 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MarianMelisaLab7"
-    Shell.FlyoutBehavior="Disabled"
-    Title="MarianMelisaLab7">
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+    <ShellContent
+        Title="Shopping Lists"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        />
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="About"
+        ContentTemplate="{DataTemplate local:AboutPage}"
+        />
+    </TabBar>
 
 </Shell>
