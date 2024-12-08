@@ -29,6 +29,22 @@ public partial class ListPage : ContentPage
 			BindingContext = new Product() 
 		}); 
 	}
+
+    async void OnDeleteItemButtonClicked(object sender, EventArgs e) 
+    {
+        var selectedItem = listView.SelectedItem as Product; 
+        if (selectedItem != null) 
+        {
+            await App.Database.DeleteProductAsync(selectedItem); 
+                                                                
+            var shopl = (ShopList)BindingContext; 
+            listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID); 
+        }
+        else
+        {
+            await DisplayAlert("Error", "Please select an item to delete.", "OK"); 
+        }
+    }
     protected override async void OnAppearing() 
 	{ 
 		base.OnAppearing(); 
